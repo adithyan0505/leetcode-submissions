@@ -9,11 +9,12 @@ public:
         }
         int len = 0, maxLen = 0;
         unordered_map<int,int> mp;
+        unordered_set<int> seen;
         for (int i = 0; i < size; i++) {
             int num = nums[i];
             int initNum = num;
-            while(us.find(num) != us.end()) {
-                us.erase(num);
+            while(us.find(num) != us.end() && seen.find(num)==seen.end()) {
+                seen.insert(num);
                 len++;
                 num++;
             }
